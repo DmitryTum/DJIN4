@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Shape post
+{% endblock title %}
+
+{% block content %}
+
+  {% if sent %}
+    <h1>Email successfully send</h1>
+    <p>
+      Post {{ post.title }} was send {{ form.cleaned_data.to }}
+    </p>
+  {% else %}
+    <form method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="submit" value="Send mail">
+    </form>
+  {% endif %}
+
+{% block content %}
