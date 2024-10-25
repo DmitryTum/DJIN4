@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -39,6 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
+
+    'taggit',
 
     'blog.apps.BlogConfig',
 ]
@@ -79,11 +86,26 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'postgres',
+        'PASSWORD': '26114469Zxc',
+        'HOST': '127.0.0.1',
+        'PORT': '5433'
     }
 }
 
+"""
+In shell
+from django.contrib.contenttypes.models import ContentType
+ContentType.objects.all().delete()
+"""
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
